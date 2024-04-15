@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1B1240"
+    android:orientation="vertical"
+    android:textAlignment="center"
+    android:padding="20dp"
+    tools:context=".MainQuiz">
+
+    <TextView
+        android:id="@+id/totalques"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:text="hello"
+        android:layout_marginTop="40dp"
+        android:background="@color/white"
+        android:textColor="#1B1240"
+        android:textFontWeight="@integer/material_motion_duration_short_1"
+        android:padding="15dp"
+        android:textStyle="bold"
+        ></TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question here"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:id="@+id/question"
+        ></TextView>
+    <Button
+        android:id="@+id/ansA"
+        android:text="A"
+        android:onClick="selectedans"
+        style="@style/ans"></Button>
+    <Button
+        android:id="@+id/ansb"
+        android:text="B"
+        android:onClick="selectedans"
+        style="@style/ansb"></Button>
+
+    <Button
+        android:id="@+id/ansc"
+        style="@style/ansb"
+        android:text="C"
+        android:onClick="selectedans"
+    ></Button>
+
+    <Button
+        android:id="@+id/ansd"
+        style="@style/ansb"
+        android:text="D"
+        android:onClick="selectedans"
+      ></Button>
+</androidx.appcompat.widget.LinearLayoutCompat>

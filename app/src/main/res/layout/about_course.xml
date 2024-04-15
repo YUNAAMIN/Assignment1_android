@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1B1240"
+    android:orientation="vertical"
+    android:textAlignment="center"
+    tools:context=".SecondActivity"
+    >
+
+    <TextView
+        android:id="@+id/welcome"
+        android:text="🤖 Choose Robot tools to see how it works"
+        style="@style/txtstyle" />
+
+
+    <Spinner
+        android:id="@+id/spnCategories"
+        style="@style/spnrstyl" />
+
+
+    <TextView
+        android:id="@+id/area"
+        style="@style/desc" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

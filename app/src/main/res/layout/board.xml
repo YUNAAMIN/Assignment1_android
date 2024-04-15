@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1B1240"
+    android:orientation="vertical"
+    android:textAlignment="center"
+    tools:context=".MainActivity">
+
+
+
+    <TextView
+        android:id="@+id/welcome"
+        style="@style/txtstyle"
+        android:text="🤖 About Us!"
+       />
+    <View
+        android:paddingTop="20dp"
+        style="@style/viewst"
+
+        />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/mypic"
+        android:layout_marginTop="40dp"
+        />
+    <TextView
+        style="@style/txtstyle"
+        android:layout_gravity="left"
+        android:padding="5dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="Meet our Teacher:"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:text="A results-oriented professional with extensive experience in project management and team coordination, adept at thriving in high-pressure environments. Demonstrated ability to quickly grasp new concepts and adapt to evolving situations. Proactive in providing support and assistance to colleagues, coupled with strong problem-solving skills and a penchant for proposing effective solutions. Exceptional communication skills enable effective relationship-building and collaboration. Known for bringing a positive and energetic attitude to all endeavors, with a passion for exploring new challenges and committing to excellence. Proficient in programming and dedicated to advancing research and achievements in both scientific and practical domains. feel free to rech me : yunanawahdah2003@gmail.com | +970597908705"
+                android:textAlignment="gravity"
+                android:textColor="@color/white"
+                android:textFontWeight="@integer/material_motion_duration_short_2"
+                android:textSize="18dp"></TextView>
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
