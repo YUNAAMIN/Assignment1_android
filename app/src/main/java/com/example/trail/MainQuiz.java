@@ -1,5 +1,6 @@
 package com.example.trail;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -32,7 +33,13 @@ public class MainQuiz extends AppCompatActivity {// this activity class is for t
         ansC = findViewById(R.id.ansc);
         ansD = findViewById(R.id.ansd);
         total.setText("Total questions: " + totalQ);// set the text in the total text view to the total question that i have that are in the array in the QuizQA class that i implement
-        uploadQ();// load the question to start the quiz
+        if (savedInstanceState != null) {//if there is an saved instance data
+            currQIndex = savedInstanceState.getInt("currQIndex", 0); // set the default value if not found
+            counter = savedInstanceState.getInt("score", 0); // set the default value if not found
+            uploadQ(); // resume and continue the states from the point i stopped in
+        } else {// if there is no saved state or i can say instance state so i start it from the beginning
+            uploadQ();
+        }
     }
     private void uploadQ() {// this method is to load the question with it answer choices
         if (currQIndex != totalQ) {
@@ -76,5 +83,28 @@ public class MainQuiz extends AppCompatActivity {// this activity class is for t
         counter = 0;// set the counter of the quesyion to 0
         currQIndex = 0;// and return back to the first question
         uploadQ();// upload the question and its answers
+    }
+    @Override
+    protected void onPause() {// here i override the on pause method  to make the  values will be saved the question that i reach and the score too
+        super.onPause();
+        SharedPreferences prefs = getSharedPreferences("QuizPrefs", MODE_PRIVATE);// use the shared prefrences to save the data
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("currQIndex", currQIndex); // here to save the current question index
+        editor.putInt("score", counter); // here to save the user's score
+        editor.apply();// apply the editor prefrences
+    }
+    @Override
+    protected void onResume() {// this method that if i return back to keep the data saved if i get back button or go to another activity
+        super.onResume();
+        SharedPreferences prefs = getSharedPreferences("QuizPrefs", MODE_PRIVATE);// use the shared prefrences to save the data
+        currQIndex = prefs.getInt("currQIndex", 0); // set defaolt value  to the 0 if its not found
+        counter = prefs.getInt("score", 0); // set the default value to 0 if its not found
+        uploadQ(); // resume and continue the quiz from the point i stoped in
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle state) {// this method is used to save the data even if i change the orientation
+        super.onSaveInstanceState(state);
+        state.putInt("currQIndex", currQIndex); // here to save the current question index
+        state.putInt("score", counter); // here to save the score of the quiz
     }
 }
