@@ -63,9 +63,9 @@ public class Mainsteps extends AppCompatActivity {// this activity to display th
         toolImage.setImageResource(slctol.getImageResourceId());// set the image for the selected one by getting the id
         toolSteps.setText(slctol.getSteps());// set the description test that are the steps to build a robot
     }
-    @Override
-    protected void onPause() {// this method used to save the data even if i step out side the activity to the other activity
-        super.onPause();
+   @Override
+    protected void onStop() {// here i override the on pause method  to make the  values will be saved the question that i reach and the score too
+        super.onStop();
         SharedPreferences.Editor editor = getSharedPreferences("ToolPrefs", MODE_PRIVATE).edit();// used shred prefrences to save the data
         editor.putInt("selectedToolIndex", toolspnr.getSelectedItemPosition());// save the value of the spnir position
         editor.apply();// apply the edits
