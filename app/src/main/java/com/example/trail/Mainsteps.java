@@ -1,5 +1,6 @@
 package com.example.trail;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -44,7 +45,6 @@ public class Mainsteps extends AppCompatActivity {// this activity to display th
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tolnam);// make array robotoolinner element on it addapter to put
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);//the spinner layout that will shown
         toolspnr.setAdapter(adapter);// make the adapter content into the spinner
-
         toolspnr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {// listener for the selected  item from the spinner
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int i, long id) {//override method that set on action for the on item selected  from the spinner
@@ -55,8 +55,24 @@ public class Mainsteps extends AppCompatActivity {// this activity to display th
 
             }
         });
+        SharedPreferences prefs = getSharedPreferences("ToolPrefs", MODE_PRIVATE);// used the shared prefrences to save the current data init
+        int selectedToolIndex = prefs.getInt("selectedToolIndex", 0);// set default to 0 if not found
+        toolspnr.setSelection(selectedToolIndex);// set the selected element that was it was
     }
     private void updatool(Tool slctol) {//this method used to update the selected tool for the robot
         toolImage.setImageResource(slctol.getImageResourceId());// set the image for the selected one by getting the id
         toolSteps.setText(slctol.getSteps());// set the description test that are the steps to build a robot
-    }}
+    }
+    @Override
+    protected void onPause() {// this method used to save the data even if i step out side the activity to the other activity
+        super.onPause();
+        SharedPreferences.Editor editor = getSharedPreferences("ToolPrefs", MODE_PRIVATE).edit();// used shred prefrences to save the data
+        editor.putInt("selectedToolIndex", toolspnr.getSelectedItemPosition());// save the value of the spnir position
+        editor.apply();// apply the edits
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle state) {// to save the data even i change the oriantation
+        super.onSaveInstanceState(state);
+        state.putInt("selectedToolIndex", toolspnr.getSelectedItemPosition());// here to save thestae of the selected tool index
+    }
+}
