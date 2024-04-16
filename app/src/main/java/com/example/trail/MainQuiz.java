@@ -84,9 +84,9 @@ public class MainQuiz extends AppCompatActivity {// this activity class is for t
         currQIndex = 0;// and return back to the first question
         uploadQ();// upload the question and its answers
     }
-    @Override
-    protected void onPause() {// here i override the on pause method  to make the  values will be saved the question that i reach and the score too
-        super.onPause();
+   @Override
+    protected void onStop() {// here i override the on pause method  to make the  values will be saved the question that i reach and the score too
+        super.onStop();
         SharedPreferences prefs = getSharedPreferences("QuizPrefs", MODE_PRIVATE);// use the shared prefrences to save the data
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("currQIndex", currQIndex); // here to save the current question index
